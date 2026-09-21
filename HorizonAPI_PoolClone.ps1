@@ -1,4 +1,4 @@
-﻿<#
+<#
 .SYNOPSIS
     Automates the creation of a new Omnissa Horizon Instant Clone VDI pool by duplicating an existing template pool.
 
@@ -37,10 +37,10 @@ $VAR = @{
 
 # Horizon REST API vars
 $API = @{
-  Name = "IC22SWCS1"
-  URIbase = "https://ic22swcs1.hop.int/rest"
-  Username = "svc_adm"
-  Domain = "HOP"
+  Name = "SRV-CS1"
+  URIbase = "https://srv-cs1.company.com/rest"
+  Username = "svc_vdi"
+  Domain = "COMPANY"
   SecCred = "sec_api_$($env:COMPUTERNAME)_$($env:USERNAME).txt"
   Token = $null
   AuthHeader = $null
@@ -228,18 +228,18 @@ while($true){
 # Pool Display Name
 $nPoolDisplayName = $NewPoolDisplayName
 if([string]::IsNullOrWhiteSpace($nPoolDisplayName)){
-    $nPoolDisplayName = Read-Host "Enter Display Name (e.g., HOP XYZ (IC22DW99))"
+    $nPoolDisplayName = Read-Host "Enter Display Name (e.g., VDI Pool)"
     if([string]::IsNullOrWhiteSpace($nPoolDisplayName)){ $nPoolDisplayName = $nPoolId }
 }
 # Pool Naming Pattern
 $nPoolNamingPattern = $NewPoolNamingPattern
 if([string]::IsNullOrWhiteSpace($nPoolNamingPattern)){
-    #$nPoolNamingPattern = Read-Host "Enter Machine Naming Pattern (e.g., IC22DW99-XYZ{n:fixed=2})"
+    #$nPoolNamingPattern = Read-Host "Enter Machine Naming Pattern (e.g., vdi-01{n:fixed=2})"
     if([string]::IsNullOrWhiteSpace($nPoolNamingPattern)){ $nPoolNamingPattern = "$($nPoolId){n:fixed=2}" }
 }
 while($true){
     if([string]::IsNullOrWhiteSpace($nPoolNamingPattern)){
-        $nPoolNamingPattern = Read-Host "Enter Machine Naming Pattern (e.g., IC22DW99-XYZ{n:fixed=2}, default: $($nPoolId){n:fixed=2})"
+        $nPoolNamingPattern = Read-Host "Enter Machine Naming Pattern (e.g., vdi-01{n:fixed=2}, default: $($nPoolId){n:fixed=2})"
         if([string]::IsNullOrWhiteSpace($nPoolNamingPattern)){ $nPoolNamingPattern = "$($nPoolId){n:fixed=2}" }
     }
     # Predictive length calculation for Horizon placeholders
