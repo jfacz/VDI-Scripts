@@ -1,4 +1,4 @@
-﻿<#
+<#
 .SYNOPSIS
     Schedules a Push Image operation for Omnissa Horizon Instant Clone desktop pools.
 
@@ -40,10 +40,10 @@ $VAR = @{
 
 # Horizon REST API vars
 $API = @{
-  Name = "IC22SWCS1"
-  URIbase = "https://ic22swcs1.hop.int/rest"
-  Username = "svc_adm"
-  Domain = "HOP"
+  Name = "SRV-CS1"
+  URIbase = "https://srv-cs1.company.com/rest"
+  Username = "svc_vdi"
+  Domain = "COMPANY"
   SecCred = "sec_api_$($env:COMPUTERNAME)_$($env:USERNAME).txt"
   Token = $null
   AuthHeader = $null
